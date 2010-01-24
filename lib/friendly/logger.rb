@@ -9,7 +9,7 @@ module Friendly
     end
 
     class Formatter < ::Logger::Formatter
-      Format = "[%s] [%s]: %s\n"
+      Format = "[%s] [%s] : %s\n"
 
       def call(severity, time, progname, msg)
         output_message = msg2str(msg)

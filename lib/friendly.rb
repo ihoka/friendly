@@ -32,8 +32,11 @@ module Friendly
       self.logger       = config[:logger]
       self.db           = Sequel.connect(config)
       self.datastore    = DataStore.new(db)
+<<<<<<< HEAD
 
       require 'friendly/benchmark_sql' if config[:benchmark_sql]
+=======
+>>>>>>> setup necessary provisions for logging
     end
 
     def batch

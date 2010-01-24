@@ -46,6 +46,7 @@ module Friendly
     include Logging
     include Friendly::Benchmarking
     include Convenience
+    include Logging
     include Scoping
     include Storage
     include Attributes
