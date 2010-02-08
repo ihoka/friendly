@@ -15,7 +15,7 @@ rescue Memcached::SystemError => e
   $cache = nil
 rescue Memcached::NotFound => e
   $logger.info("Found a memcached server. Caching enabled!".green)
-  Friendly.cache = $cache
+  Friendly.cache = Friendly::Memcached.new($cache)
 end
 
 class User
