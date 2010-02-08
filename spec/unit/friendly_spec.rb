@@ -10,10 +10,6 @@ describe "Friendly" do
       Friendly.configure(:host => "localhost")
     end
 
-    it "creates a db object by delegating to Sequel" do
-      Sequel.should have_received(:connect).with(:host => "localhost")
-    end
-
     it "creates a datastore object with the db object" do
       Friendly::DataStore.should have_received(:new).with(@db)
     end
