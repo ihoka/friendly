@@ -32,6 +32,9 @@ module Friendly
     end
 
     module ClassMethods
+      include Logging
+      include Friendly::Benchmarking
+
       attr_writer :table_name
 
       def table_name
