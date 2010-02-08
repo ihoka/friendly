@@ -1,3 +1,5 @@
+require 'colored'
+
 module Friendly
   module Document
     module Benchmarking
