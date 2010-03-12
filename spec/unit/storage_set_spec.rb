@@ -2,9 +2,18 @@ require File.expand_path("../../spec_helper", __FILE__)
 
 describe "Friendly::StorageSet" do
   before do
-    @factory = stub("Friendly::StorageFactory")
+    @doctbl  = stub("Friendly::Table")
+    @factory = stub("Friendly::StorageFactory", :document_table => @doctbl)
     @klass   = stub("Class:Friendly::Document")
     @set     = Friendly::StorageSet.new(@klass, @factory)
+  end
+
+  it "creates a document table by default" do
+    @factory.should have_received(:document_table).with(@klass)
+  end
+
+  it "saves a document table by default" do
+    @set.document_table.should == @doctbl
   end
 
   describe "when creating an index" do
