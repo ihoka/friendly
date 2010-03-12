@@ -77,4 +77,32 @@ describe "Friendly::StorageSet" do
       end
     end
   end
+
+  describe "#cache_for" do
+    before do
+      @cache = stub("Friendly::Cache")
+      @factory.stubs(:cache).returns(@cache)
+      @set.add_cache(:x, :y => "z")
+    end
+
+    describe "when there is a satisfying cache" do
+      before do
+        @cache.stubs(:satisfies?).returns(true)
+      end
+
+      it "returns the satisfying cache" do
+        @set.cache_for({}).should == @cache
+      end
+    end
+
+    describe "when there is no satisfying cache" do
+      before do
+        @cache.stubs(:satisfies?).returns(false)
+      end
+
+      it "returns nil" do
+        @set.cache_for({}).should be_nil
+      end
+    end
+  end
 end

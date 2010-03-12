@@ -26,6 +26,10 @@ module Friendly
       index
     end
 
+    def cache_for(query)
+      caches.detect { |c| c.satisfies?(query) }
+    end
+
     protected
       def tables
         indexes + [document_table]
