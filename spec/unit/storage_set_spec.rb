@@ -105,4 +105,23 @@ describe "Friendly::StorageSet" do
       end
     end
   end
+  
+  describe "#each_store" do
+    before do
+      @cache = stub("Friendly::Cache")
+      @index = stub("Friendly::Index")
+      @factory.stubs(:cache).returns(@cache)
+      @factory.stubs(:index).returns(@index)
+      @set.add_cache "x", "y"
+      @set.add_index :x
+    end
+
+    it "calls the block with each store that exists" do
+      @accumulator = []
+      @set.each_store { |s| @accumulator << s }
+      @accumulator.should include(@doctbl)
+      @accumulator.should include(@cache)
+      @accumulator.should include(@index)
+    end
+  end
 end

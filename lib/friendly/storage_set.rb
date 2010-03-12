@@ -30,6 +30,14 @@ module Friendly
       caches.detect { |c| c.satisfies?(query) }
     end
 
+    def each_store
+      stores.each { |s| yield(s) }
+    end
+
+    def stores
+      tables + caches
+    end
+
     protected
       def tables
         indexes + [document_table]
