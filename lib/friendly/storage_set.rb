@@ -17,5 +17,18 @@ module Friendly
     def add_cache(fields, options)
       caches << storage_factory.cache(klass, fields, options)
     end
+    
+    def index_for(conditions)
+      index = tables.detect { |i| i.satisfies?(conditions) }
+      if index.nil?
+        raise MissingIndex, "No index found to satisfy: #{conditions.inspect}."
+      end
+      index
+    end
+
+    protected
+      def tables
+        indexes + [document_table]
+      end
   end
 end

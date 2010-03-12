@@ -2,7 +2,7 @@ require File.expand_path("../../spec_helper", __FILE__)
 
 describe "Friendly::StorageSet" do
   before do
-    @doctbl  = stub("Friendly::Table")
+    @doctbl  = stub("Friendly::Table", :satisfies? => false)
     @factory = stub("Friendly::StorageFactory", :document_table => @doctbl)
     @klass   = stub("Class:Friendly::Document")
     @set     = Friendly::StorageSet.new(@klass, @factory)
@@ -45,6 +45,36 @@ describe "Friendly::StorageSet" do
 
     it "asks the factory to create a cache" do
       @factory.should have_received(:cache).with(@klass, [:fields], :options => "")
+    end
+  end
+
+  describe "finding an index" do
+    before do
+      @index = stub("Friendly::Index")
+      @factory.stubs(:index).returns(@index)
+      @set.add_index(:doesntmatter)
+    end
+
+    describe "when a matching one exists" do
+      before do
+        @index.stubs(:satisfies?).returns(true)
+      end
+
+      it "returns the matching index" do
+        @set.index_for({}).should == @index
+      end
+    end
+
+    describe "when none match" do
+      before do
+        @index.stubs(:satisfies?).returns(false)
+      end
+
+      it "raises Friendly::MissingIndex" do
+        lambda {
+          @set.index_for({}) 
+        }.should raise_error(Friendly::MissingIndex)
+      end
     end
   end
 end
