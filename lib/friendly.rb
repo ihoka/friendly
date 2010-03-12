@@ -18,6 +18,7 @@ require 'friendly/scope'
 require 'friendly/scope_proxy'
 require 'friendly/storage_factory'
 require 'friendly/storage_proxy'
+require 'friendly/storage_set'
 require 'friendly/translator'
 require 'friendly/uuid'
 
