@@ -7,49 +7,31 @@ describe "Friendly::StorageProxy" do
                            :update     => nil, 
                            :destroy    => nil,
                            :satsifies? => nil)
-    @table          = stub(:satisfies? => false, :create => nil, 
-                           :update => nil,       :destroy => nil)
-    @storage_factory  = stub(:index => @index)
-    @storage_factory.stubs(:document_table).with(@klass).returns(@table)
-    @storage        = Friendly::StorageProxy.new(@klass, @storage_factory)
-  end
-
-  it "instantiates and adds a document table by default" do
-    @storage.tables.should include(@table)
+    @table          = stub(:satisfies? => false, :create  => nil, 
+                           :update     => nil,   :destroy => nil)
+    @storage_set = stub("Friendly::StorageSet", :index_for => nil)
+    @storage     = Friendly::StorageProxy.new(@klass, @storage_set)
   end
 
   describe "doing a `first`" do
     before do
-      @id     = stub
-      @index  = stub(:satisfies? => true, :first => @id)
-      @storage.tables << @index
+      @id     = stub("Friendly::UUID")
+      @index  = stub("Friendly::Index", :first => @id)
+      @storage_set.stubs(:index_for).returns(@index)
+      @result = @storage.first(:name => "x")
     end
 
-    describe "when there's an index that matches the conditions" do
-      before do
-        @result = @storage.first(:name => "x")
-      end
-
-      it "delegates to the index that satisfies the conditions" do
-        @index.should have_received(:first).once
-        @index.should have_received(:first).with(:name => "x")
-      end
-
-      it "returns id" do
-        @result.should == @id
-      end
+    it "asks the storage set for the index matching the conditions" do
+      @storage_set.should have_received(:index_for).with(:name => "x")
     end
 
-    describe "when there's no index that matches" do
-      before do
-        @index.stubs(:satisfies?).returns(false)
-      end
+    it "delegates to the index that satisfies the conditions" do
+      @index.should have_received(:first).once
+      @index.should have_received(:first).with(:name => "x")
+    end
 
-      it "raises MissingIndex" do
-        lambda {
-          @storage.first(:name => "x")
-        }.should raise_error(Friendly::MissingIndex)
-      end
+    it "returns id" do
+      @result.should == @id
     end
   end
 

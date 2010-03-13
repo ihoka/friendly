@@ -1,24 +1,19 @@
-require 'friendly/storage_factory'
+require 'friendly/storage_set'
 require 'friendly/table_creator'
 
 module Friendly
   class StorageProxy
-    attr_reader :klass, :storage_factory, :tables, :table_creator, :caches
+    attr_reader :klass, :storage_set, :tables, :table_creator, :caches
 
-    def initialize(klass, storage_factory = StorageFactory.new,
+    def initialize(klass, storage_set=StorageSet.new(klass),
                     table_creator=TableCreator.new)
-      super()
-      @klass           = klass
-      @storage_factory = storage_factory
-      @table_creator   = table_creator
-      @tables          = [storage_factory.document_table(klass)]
-      @caches          = []
+      @klass         = klass
+      @storage_set   = storage_set
+      @table_creator = table_creator
     end
 
     def first(conditions)
-      first_from_cache(conditions) do
-        index_for(conditions).first(conditions)
-      end
+      storage_set.index_for(conditions).first(conditions)
     end
 
     def all(query)
@@ -36,11 +31,11 @@ module Friendly
     end
 
     def add(*args)
-      tables << storage_factory.index(klass, *args)
+      #tables << storage_factory.index(klass, *args)
     end
 
     def cache(fields, options = {})
-      caches << storage_factory.cache(klass, fields, options)
+      #caches << storage_factory.cache(klass, fields, options)
     end
 
     def create(document)
@@ -56,7 +51,7 @@ module Friendly
     end
 
     def create_tables!
-      tables.each { |t| table_creator.create(t) }
+      #tables.each { |t| table_creator.create(t) }
     end
 
     def index_for(conditions)
