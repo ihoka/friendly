@@ -3,7 +3,11 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 Dir[File.expand_path(File.dirname(__FILE__)) + "/fakes/*.rb"].each do |f|
   require f
 end
+
 require 'rubygems'
+require 'bundler/setup'
+
+require 'active_support'
 require 'spec'
 require 'spec/autorun'
 require 'sequel'

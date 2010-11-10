@@ -24,3 +24,4 @@ test_active_record.rb
 spec/config.yml
 .yardoc
 doc
+.bundle

@@ -10,13 +10,15 @@ begin
     gem.email = "jamesgolick@gmail.com"
     gem.homepage = "http://friendlyorm.com"
     gem.authors = ["James Golick"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_development_dependency "rspec", "~> 1.3.1"
     gem.add_development_dependency "cucumber", ">= 0"
-    gem.add_development_dependency "jferris-mocha"
-    gem.add_development_dependency "memcached"
+    gem.add_development_dependency "jferris-mocha", "0.9.8.20100526112143"
+    gem.add_development_dependency "memcached", "~> 0.20.1"
+    gem.add_development_dependency "yajl-ruby", "~> 0.7.7"
+    gem.add_development_dependency "mysql", "~> 2.8.1"
     gem.add_dependency "sequel", ">= 3.7.0"
-    gem.add_dependency "activesupport", "=2.3.5"
-    gem.add_dependency "will_paginate"
+    gem.add_dependency "activesupport", "~> 2.3.5"
+    gem.add_dependency "will_paginate", "~> 2.3.0"
     gem.add_dependency "rufus-json", "=0.2.3"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
