@@ -15,7 +15,7 @@ begin
     gem.add_development_dependency "jferris-mocha"
     gem.add_development_dependency "memcached"
     gem.add_dependency "sequel", ">= 3.7.0"
-    gem.add_dependency "activesupport", "=2.3.4"
+    gem.add_dependency "activesupport", "=2.3.5"
     gem.add_dependency "will_paginate"
     gem.add_dependency "rufus-json", "=0.2.3"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
