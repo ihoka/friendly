@@ -35,6 +35,7 @@ Jeweler::Tasks.new do |gem|
   gem.add_dependency "rufus-json", "=0.2.3"
   # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
 end
+Jeweler::RubygemsDotOrgTasks.new
 
 require 'spec/rake/spectask'
 Spec::Rake::SpecTask.new(:spec) do |spec|
