@@ -11,12 +11,14 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  gem.name = "friendly"
+  gem.name = "ihoka-friendly"
   gem.summary = %Q{NoSQL with MySQL in Ruby}
   gem.description = %Q{}
   gem.email = "jamesgolick@gmail.com"
   gem.homepage = "http://friendlyorm.com"
   gem.authors = ["James Golick"]
+  gem.files = Dir['lib/**/*.rb'] + %w[rails/init.rb CHANGELOG.md CONTRIBUTORS.md README.md LICENSE]
+  gem.test_files = []
   gem.add_development_dependency 'mysql',         '~> 2.8.1'
   gem.add_development_dependency 'activesupport', '~> 2.3.10'
   gem.add_development_dependency 'sequel',        '~> 3.16.0'

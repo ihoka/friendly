@@ -1,6 +1,13 @@
 Changelog
 =========
 
+### 0.6.2
+  * (ihoka) renamed gem to ihoka-friendly
+
+### 0.6.1
+  * (ihoka) upgraded to Jeweler 1.5
+  * (ihoka) updated gem dependencies
+
 ### 0.5
   
   * (jamesgolick) Add offline index building.
