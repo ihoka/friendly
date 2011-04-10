@@ -14,7 +14,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "ihoka-friendly"
   gem.summary = %Q{NoSQL with MySQL in Ruby}
   gem.description = %Q{}
-  gem.email = "jamesgolick@gmail.com"
+  gem.email = "istvan.hoka@gmail.com"
   gem.homepage = "http://friendlyorm.com"
   gem.authors = ["James Golick"]
   gem.files = Dir['lib/**/*.rb'] + %w[rails/init.rb CHANGELOG.md CONTRIBUTORS.md README.md LICENSE]
