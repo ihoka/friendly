@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["James Golick"]
   s.date = %q{2011-04-10}
   s.description = %q{}
-  s.email = %q{jamesgolick@gmail.com}
+  s.email = %q{istvan.hoka@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
