@@ -1,9 +1,10 @@
 require File.expand_path("../../spec_helper", __FILE__)
 require 'active_support/duration'
-require 'active_support/core_ext/integer'
-require 'active_support/core_ext/time'
-require 'active_support/core_ext/object'
-require 'active_support/core_ext/numeric'
+require 'active_support/core_ext'
+# require 'active_support/core_ext/integer'
+# require 'active_support/core_ext/time'
+# require 'active_support/core_ext/object'
+# require 'active_support/core_ext/numeric'
 
 describe "Finding multiple objects by id" do
   before do
