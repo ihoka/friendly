@@ -1,5 +1,7 @@
 # Friendly
 
+[![Build Status](https://travis-ci.org/ihoka/friendly.png)](https://travis-ci.org/ihoka/friendly)
+
 ### Short Version
 
 This is an implementation of the ideas found in [this article](http://bret.appspot.com/entry/how-friendfeed-uses-mysql) about how FriendFeed uses MySQL. You should read that article for all the details.
