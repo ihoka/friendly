@@ -26,7 +26,7 @@ module Friendly
       loop do
         rows = datastore.all(klass, Query.new(:offset! => count, 
                                               :limit!  => objects_per_iteration, 
-                                              :order!  => :added_id.asc))
+                                              :order!  => :added_id.asc)).to_a
         rows.each do |attrs|
           begin
             index.create(translator.to_object(klass, attrs))
