@@ -1,5 +1,4 @@
-Friendly
-========
+# Friendly
 
 ### Short Version
 
@@ -57,8 +56,7 @@ As is, our user model only supports queries by id.
 
 Not great. We'd probably want to be able to query by name, at the very least.
 
-Indexes
-=======
+## Indexes
 
 To support richer queries, Friendly maintains its own indexes in separate tables. To index our user model on name, we'd create a table like this:
 
@@ -84,8 +82,7 @@ Any time friendly saves a user object, it will update the index as well. That wa
 
 One of the big advantages to this approach is that indexes can be built offline. If you need a new index, you can write a script to generate it in the background without affecting the running application. Then, once it's ready, you can start querying it.
 
-Caching
-=======
+## Caching
 
 Friendly has built-in support for write-through caching.
 
@@ -112,8 +109,7 @@ Currently, only caching by id is supported, but caching of arbitrary indexes is 
 
 __We're seeing a 99.8% cache hit rate in production with this code.__
 
-Scopes
-======
+## Scopes
 
 ### Named Scopes
 
@@ -167,8 +163,7 @@ You can also create a scope object on the fly:
     
 The object you get is identical to the one you get from a named_scope. So, see above for the API.
 
-Associations
-============
+## Associations
 
 Friendly currently only supports has\_many associations. 
 
@@ -204,8 +199,7 @@ You can also use any other Friendly::Scope method like scope chaining.
 
 See the section above or the Friendly::Scope docs for more details.
 
-Offline Indexing
-================
+## Offline Indexing
 
 Friendly includes support for building an index in the background, without taking your app offline.
 
@@ -227,15 +221,13 @@ Now that the the new table has been created, you need to copy the .rake file inc
 
 If you're running this in production, you'll probably want to fire up GNU screen so that it'll keep running even if you lose your SSH connection. When this task completes, the index is populated and ready to go!
 
-Installation
-============
+## Installation
 
 Friendly is available as a gem. Get it with:
 
-    sudo gem install friendly
+    gem install ihoka-friendly
 
-Setup
-=====
+## Setup
 
 All you have to do is supply Friendly with some information about your database:
 
@@ -268,8 +260,7 @@ Then, create some models, and run:
 
 That'll create all the necessary tables as best it can. This has worked well enough for me, but it's possible that certain table configurations will fail. It won't attempt to create any tables that already exist, so it's safe to run in an initializer or something.
 
-TODO
-====
+## TODO
 
   - Online migrations. Add a version column to each model and a DSL to update schema from one version to another on read. This facilitates data transformations on the fly. If you want to transform the whole table at once, just iterate over all the objects, and save.
   - Associations
@@ -277,10 +268,10 @@ TODO
   - Caching of arbitrary indexes
   - A lot more documentation
 
-Credits
-=======
+## Credits
 
-Friendly was developed by James Golick & Jonathan Palardy at FetLife (nsfw).
+* Friendly was intially developed by James Golick & Jonathan Palardy at FetLife (nsfw).
+* Rubygems, Bundler, Ruby and dependency upgrades by Istvan Hoka.
 
 Copyright (c) 2009 James Golick. See LICENSE for details.
 

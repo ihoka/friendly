@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### 0.7.0
+  * (ihoka) Ruby 1.9.3 compatibility. 1.8.x no longer supported.
+
+### 0.6.3
+  * (ihoka) Running config.yml through ERB
+
 ### 0.6.2
   * (ihoka) renamed gem to ihoka-friendly
 
