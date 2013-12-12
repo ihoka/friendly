@@ -12,9 +12,7 @@ Gem::Specification.new do |s|
   s.authors = ["James Golick", "Istvan Hoka"]
 
   s.add_development_dependency 'mysql',         '~> 2.9.1'
-  s.add_development_dependency 'activesupport', '~> 2.3.18'
   s.add_development_dependency 'memcached',     '~> 1.7.2'
-  s.add_development_dependency 'will_paginate', '~> 2.3.15'
   s.add_development_dependency 'yajl-ruby',     '~> 0.7.7'
   s.add_development_dependency 'rspec',         '~> 1.3.1'
   s.add_development_dependency 'jferris-mocha', '~> 0.9.8.20100526112143'
