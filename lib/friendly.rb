@@ -10,7 +10,6 @@ require 'friendly/index'
 require 'friendly/indexer'
 require 'friendly/memcached'
 require 'friendly/query'
-require 'friendly/sequel_monkey_patches'
 require 'friendly/scope'
 require 'friendly/scope_proxy'
 require 'friendly/storage_factory'
@@ -19,6 +18,8 @@ require 'friendly/translator'
 require 'friendly/uuid'
 
 require 'will_paginate/collection'
+
+Sequel.extension :core_extensions
 
 module Friendly
   class << self
